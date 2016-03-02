@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2016-01-23T13:39:48 -->
+<jasperReport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="splitwise_expences_report" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail"
+              columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20"
+              uuid="34b70412-d92d-4f6b-a72b-4931890b991d">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+    <queryString>
+        <![CDATA[]]>
+    </queryString>
+    <field name="name" class="java.lang.String">
+        <fieldDescription><![CDATA[name]]></fieldDescription>
+    </field>
+    <field name="email" class="java.lang.String">
+        <fieldDescription><![CDATA[email]]></fieldDescription>
+    </field>
+    <field name="amount" class="java.math.BigDecimal">
+        <fieldDescription><![CDATA[amount]]></fieldDescription>
+    </field>
+    <field name="date" class="java.util.Date">
+        <fieldDescription><![CDATA[date]]></fieldDescription>
+    </field>
+    <field name="comment" class="java.lang.String">
+        <fieldDescription><![CDATA[comment]]></fieldDescription>
+    </field>
+    <variable name="userExpenceReportToList" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+    <variable name="totalAmount" class="java.math.BigDecimal" resetType="Group" resetGroup="email_Group"
+              calculation="Sum">
+        <variableExpression><![CDATA[BigDecimal.ZERO.add($F{amount})]]></variableExpression>
+        <initialValueExpression><![CDATA[BigDecimal.ZERO]]></initialValueExpression>
+    </variable>
+    <group name="email_Group">
+        <groupExpression><![CDATA[$F{email}]]></groupExpression>
+        <groupHeader>
+            <band height="38">
+                <staticText>
+                    <reportElement x="0" y="-1" width="100" height="30" uuid="0c51d217-0c29-4a99-a709-43e264fea656"/>
+                    <textElement textAlignment="Left" verticalAlignment="Bottom"/>
+                    <text><![CDATA[Name]]></text>
+                </staticText>
+                <staticText>
+                    <reportElement x="101" y="-1" width="128" height="30" uuid="903eea32-eb59-43ef-89e1-f49ef08883c5"/>
+                    <textElement textAlignment="Left" verticalAlignment="Bottom"/>
+                    <text><![CDATA[Email]]></text>
+                </staticText>
+                <staticText>
+                    <reportElement x="231" y="-1" width="91" height="30" uuid="c7e42bce-3dd7-4a21-8bec-3d851398ba04"/>
+                    <textElement textAlignment="Left" verticalAlignment="Bottom"/>
+                    <text><![CDATA[Date]]></text>
+                </staticText>
+                <staticText>
+                    <reportElement x="323" y="-1" width="129" height="30" uuid="e411b271-c9f2-4e08-9cc1-d9c31d957760"/>
+                    <textElement textAlignment="Left" verticalAlignment="Bottom"/>
+                    <text><![CDATA[Comment]]></text>
+                </staticText>
+                <staticText>
+                    <reportElement x="452" y="-1" width="98" height="30" uuid="532a937a-667d-4cd3-b87c-03be4a0dde7b"/>
+                    <textElement textAlignment="Left" verticalAlignment="Bottom"/>
+                    <text><![CDATA[Amount]]></text>
+                </staticText>
+                <line>
+                    <reportElement x="0" y="31" width="547" height="1" uuid="13f267fa-f8d7-4ef4-99d9-639dd288d488"/>
+                </line>
+            </band>
+        </groupHeader>
+        <groupFooter>
+            <band height="65">
+                <staticText>
+                    <reportElement x="391" y="5" width="58" height="30" uuid="4353ac99-2b45-498f-9183-7cf12e66ac01"/>
+                    <text><![CDATA[Total Sum:]]></text>
+                </staticText>
+                <textField>
+                    <reportElement x="449" y="5" width="100" height="30" uuid="8ec6b481-a542-4df8-9ca5-522005d4223f"/>
+                    <textFieldExpression><![CDATA[$V{totalAmount}]]></textFieldExpression>
+                </textField>
+                <line>
+                    <reportElement x="1" y="4" width="547" height="1" uuid="aab1ab49-6aec-4999-93f0-44ef612bc88b"/>
+                </line>
+            </band>
+        </groupFooter>
+    </group>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="13" splitType="Stretch"/>
+    </title>
+    <pageHeader>
+        <band height="63" splitType="Stretch">
+            <staticText>
+                <reportElement x="180" y="11" width="260" height="41" uuid="ece11c62-e0bf-4ca9-975b-90d70b6fe148"/>
+                <textElement textAlignment="Center">
+                    <font size="20"/>
+                </textElement>
+                <text><![CDATA[ Expense Report]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="1" y="0" width="100" height="30" uuid="2f237632-0b14-494f-af57-0df6d6858e35"/>
+                <textElement rotation="None">
+                    <font size="18"/>
+                </textElement>
+                <text><![CDATA[Split wise]]></text>
+            </staticText>
+        </band>
+    </pageHeader>
+    <columnHeader>
+        <band height="23" splitType="Stretch"/>
+    </columnHeader>
+    <detail>
+        <band height="40" splitType="Stretch">
+            <textField>
+                <reportElement x="452" y="2" width="98" height="30" uuid="0eb778e6-68ac-4b5d-9e0b-cca058b79867"/>
+                <textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="324" y="2" width="128" height="30" uuid="73fffae4-2df0-44eb-8dcf-b212160fde22"/>
+                <textFieldExpression><![CDATA[$F{comment}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="232" y="2" width="91" height="30" uuid="60f688bd-4a98-4d91-8efc-5c7cd61d704b"/>
+                <textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="102" y="2" width="128" height="30" uuid="24257430-d6aa-4cf9-9170-eee672ef5d95"/>
+                <textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="2" width="101" height="30" uuid="80b072c0-87f1-4a65-bbf8-27a3bb03ae27"/>
+                <textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="8" splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="54" splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band height="50" splitType="Stretch"/>
+    </summary>
+</jasperReport>

@@ -1,0 +1,87 @@
+<div ng-if="message != '' " class="alert alert-success">
+    <strong>{{message}}</strong>
+</div>
+<div class="container">
+    <form class="form-group">
+        <div class="form-group col-lg-5">
+            <input type="text" ng-model="email"
+                   name="email" class="form-control"
+                   placeholder="Email" required="true"/>
+        </div>
+        <div class="form-group col-lg-5">
+            <div class="radio">
+                <label><input type="radio" name="optradio" ng-model="option" value="EMAIL"/>Email</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optradio" ng-model="option" value="GEN_REPORT"/>
+                    Generate Report</label>
+            </div>
+
+            <input type="button" value="AddJob"
+                   class="btn btn-primary"
+                   ng-click="addJob()"/>
+        </div>
+        <div class="form-group col-lg-5">
+            <h2>Completed Jobs</h2>
+
+            <p>
+
+            </p>
+            <input type="text" class="form-control" placeholder="search"
+                   ng-model="search"/>
+        </div>
+
+    </form>
+    <div class="table-responsive">
+
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>PDF View</th>
+                <th><a href="#"><span class="glyphicon glyphicon-trash"></span> </a></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="succcess"
+                ng-repeat="value in jobHistory | orderBy:sort.column:sort.descending | filter: search">
+                <td>{{value.userName}}</td>
+                <td>{{value.email}}</td>
+                <td>{{value.completedTime | date : "medium"}}</td>
+                <td><a href="/genratePDF/{{value.id}}">Splitwise.PDF</a></td>
+                <td><a href="#" ng-click="$event.preventDefault();deleteJobHistory(value.id)">
+                    <span class="glyphicon glyphicon-trash">   
+                    </span> </a>
+                </td>
+            </tr>
+            <!--
+            <tr class="success">
+                <td>John</td>
+                <td>Doe</td>
+                <td>july@example.com</td>
+                <td><a href="/genratePDF">Splitwise.PDF</a></td>
+                <td><a href="#"><span class="glyphicon glyphicon-trash"></span> </a></td>
+            </tr>
+
+            <tr class="danger">
+                <td>Mary</td>
+                <td>Moe</td>
+                <td>mary@example.com</td>
+                <td><a href="/genratePDF">Splitwise.PDF</a></td>
+                <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+            </tr>
+            
+            <tr class="info">
+                <td>July</td>
+                <td>Dooley</td>
+                <td>july@example.com</td>
+                <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+            </tr>
+            -->
+            </tbody>
+        </table>
+    </div>
+</div>
