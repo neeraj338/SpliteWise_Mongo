@@ -28,7 +28,7 @@ function funcD3(d3) {
 
         var tooltip = d3.select('#chart')                               // NEW
           .append('div')                                                // NEW
-          .attr('class', 'tooltip');                                    // NEW
+          .attr('class', 'd3tooltip');                                    // NEW
                       
         tooltip.append('div')                                           // NEW
           .attr('class', 'label');                                      // NEW
@@ -68,8 +68,9 @@ function funcD3(d3) {
             tooltip.select('.label').html(d.data.label);                // NEW
             tooltip.select('.count').html(d.data.count);                // NEW
             tooltip.select('.percent').html(percent + '%');             // NEW
-            tooltip.style('display', 'block');                          // NEW
-          });                                                           // NEW
+            tooltip.style('display', 'block');
+            tooltip.select('.label').style('color', '#2F4F4F');
+          });
           
           path.on('mouseout', function() {                              // NEW
             tooltip.style('display', 'none');                           // NEW
